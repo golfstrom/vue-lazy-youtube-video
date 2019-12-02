@@ -5,13 +5,13 @@
         <picture>
           <source
             :srcset="
-              `https://i.ytimg.com/vi_webp/${id}/${previewImageSize}.webp`
+              webpSrc || `https://i.ytimg.com/vi_webp/${id}/${previewImageSize}.webp`
             "
             type="image/webp"
           />
           <img
             class="y-video__media y-video__media--type--img"
-            :src="`https://i.ytimg.com/vi/${id}/${previewImageSize}.jpg`"
+            :src="jpgSrc || `https://i.ytimg.com/vi/${id}/${previewImageSize}.jpg`"
             :alt="alt"
           />
         </picture>
@@ -51,9 +51,13 @@ export default {
       type: String,
       default: 'Video alternative image',
     },
-    buttonLabel: {
+    webpSrc: {
       type: String,
-      default: 'Play video',
+      default: null,
+    },
+    jpgSrc: {
+      type: String,
+      default: null,
     },
     aspectRatio: {
       type: String,
